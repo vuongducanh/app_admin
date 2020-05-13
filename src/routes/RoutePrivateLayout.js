@@ -1,14 +1,19 @@
-import React from 'react';
-import { Route, Redirect  } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import AuthContext from '../context/auth/authContext';
 
 const PrivateRoute = ({ component: Component, layout: Layout, routes, ...rest }) => {
 
-  const checkLogin = true
+  const authContext = useContext(AuthContext);
+  const { isAuthenticated } = authContext;
+
+  const isLogin = isAuthenticated();
+
   return (
     <Route
       {...rest}
       render={renderProps => {
-        if (!checkLogin) {
+        if (!isLogin) {
           return (
             <Redirect
               to={{
@@ -23,8 +28,8 @@ const PrivateRoute = ({ component: Component, layout: Layout, routes, ...rest })
         return Layout ? (
           <Layout {...renderProps}>{Component ? <Component {...renderProps} routes={routes} /> : null}</Layout>
         ) : (
-          <Component {...renderProps} routes={routes} />
-        );
+            <Component {...renderProps} routes={routes} />
+          );
       }}
     />
   );

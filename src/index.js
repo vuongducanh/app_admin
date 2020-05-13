@@ -2,12 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import AuthState from './context/auth/AuthState';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <AuthState>
     <App />
-  </React.StrictMode>,
+  </AuthState>,
   document.getElementById('root')
 );
 

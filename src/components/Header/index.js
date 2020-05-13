@@ -1,5 +1,14 @@
-import React from 'react';
-function index() {
+import React, { useContext } from 'react';
+import AuthContext from './../../context/auth/authContext';
+
+function Header() {
+  const authContext = useContext(AuthContext);
+  const { logout } = authContext;
+
+  const handleLogOut = () => {
+    logout()
+  }
+
   return (
     <nav className="main-header navbar navbar-expand navbar-white navbar-light">
       <ul className="navbar-nav">
@@ -132,7 +141,7 @@ function index() {
             </li>
             <li className="user-footer">
               <a href="#" className="btn btn-default btn-flat">Profile</a>
-              <a href="#" className="btn btn-default btn-flat float-right">Sign out</a>
+              <a href="#" className="btn btn-default btn-flat float-right" onClick={handleLogOut}>Sign out</a>
             </li>
           </ul>
         </li>
@@ -146,4 +155,4 @@ function index() {
   );
 }
 
-export default index;
+export default Header;

@@ -25,8 +25,8 @@ class Main extends PureComponent {
         <SideBar/>
 
         <div className="content-wrapper">
-          <section class="content-header">
-            <div class="container-fluid">
+          <section className="content-header">
+            <div className="container-fluid">
               {children}
             </div>
           </section>

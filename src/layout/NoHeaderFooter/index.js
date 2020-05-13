@@ -1,8 +1,19 @@
 import React, { PureComponent } from 'react';
+import { Redirect } from 'react-router-dom';
 import './styles.scss';
 
 class Main extends PureComponent {
   render() {
+    if (this.props.location.pathname === '/') {
+      return (
+        <Redirect
+          to={{
+            pathname: '/dashboard',
+            state: { from: this.props.location }
+          }}
+        />
+      );
+    }
 
     const { children } = this.props;
     return (
