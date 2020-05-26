@@ -1,16 +1,45 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './styles.scss';
 import FacebookLogin from 'react-facebook-login'
 import { Link } from 'react-router-dom';
+import { login } from './../../api/login'
 
 const Login = (props) => {
-  const responseFacebook = (response) => {
-    console.log('response =', response);
-    localStorage.setItem('access_token', response.accessToken)
 
-    if (response.accessToken) {
-      props.history.push('/dashboard')
-    }
+
+  const [param, setParam] = useState({
+    email: '',
+    password: ''
+  })
+
+  const responseFacebook = (response) => {
+    // console.log('response =', response);
+    // localStorage.setItem('access_token', response.accessToken)
+
+    // if (response.accessToken) {
+    //   props.history.push('/dashboard')
+    // }
+  }
+
+  const handleLogin = (e) => {
+    e.preventDefault()
+    login(param).then((res) => {
+      if (res.data.access_token) {
+        localStorage.setItem('access_token', res.data.access_token)
+        props.history.push('/dashboard')
+      }
+    }).catch((error) => {
+      localStorage.setItem('access_token', "")
+      throw error
+    })
+  }
+
+  const handleChangeEmail = (e) => {
+    setParam({...param, email: e.target.value})
+  }
+
+  const handleChangePassWord = (e) => {
+    setParam({...param, password: e.target.value})
   }
 
   return (
@@ -23,9 +52,9 @@ const Login = (props) => {
         <div className="card">
           <div className="card-body login-card-body">
             <p className="login-box-msg">Sign in to start your session</p>
-            <form action="../../index3.html" method="post">
+            <form onSubmit={handleLogin}  method="POST" >
               <div className="input-group mb-3">
-                <input type="email" className="form-control" placeholder="Email" />
+                <input type="email" className="form-control" placeholder="Email"  onChange={handleChangeEmail}/>
                 <div className="input-group-append">
                   <div className="input-group-text">
                     <span className="fas fa-envelope"></span>
@@ -34,7 +63,7 @@ const Login = (props) => {
               </div>
 
               <div className="input-group mb-3">
-                <input type="password" className="form-control" placeholder="Password" />
+                <input type="password" className="form-control" placeholder="Password" onChange={handleChangePassWord} />
                 <div className="input-group-append">
                   <div className="input-group-text">
                     <span className="fas fa-lock"></span>
