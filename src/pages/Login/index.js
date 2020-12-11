@@ -1,37 +1,34 @@
 import React, {useState} from 'react';
 import './styles.scss';
-import FacebookLogin from 'react-facebook-login'
 import { Link } from 'react-router-dom';
 import { login } from './../../api/login'
 
 const Login = (props) => {
-
-
   const [param, setParam] = useState({
     email: '',
     password: ''
   })
 
-  const responseFacebook = (response) => {
-    // console.log('response =', response);
-    // localStorage.setItem('access_token', response.accessToken)
+  const _responseFacebook = () => {
+    localStorage.setItem('access_token', 'abc')
 
     // if (response.accessToken) {
-    //   props.history.push('/dashboard')
+      props.history.push('/dashboard')
     // }
   }
 
   const handleLogin = (e) => {
-    e.preventDefault()
-    login(param).then((res) => {
-      if (res.data.access_token) {
-        localStorage.setItem('access_token', res.data.access_token)
-        props.history.push('/dashboard')
-      }
-    }).catch((error) => {
-      localStorage.setItem('access_token', "")
-      throw error
-    })
+    _responseFacebook()
+    // e.preventDefault()
+    // login(param).then((res) => {
+    //   if (res.data.access_token) {
+    //     localStorage.setItem('access_token', res.data.access_token)
+    //     props.history.push('/dashboard')
+    //   }
+    // }).catch((error) => {
+    //   localStorage.setItem('access_token', "")
+    //   throw error
+    // })
   }
 
   const handleChangeEmail = (e) => {
@@ -70,44 +67,11 @@ const Login = (props) => {
                   </div>
                 </div>
               </div>
-              <div className="row">
-                <div className="col-8">
-                  <div className="icheck-primary">
-                    <input type="checkbox" id="remember" />
-                    <label htmlFor="remember">
-                      Remember Me
-              </label>
-                  </div>
-                </div>
-                <div className="col-4">
+
+              <div className="col-4">
                   <button type="submit" className="btn btn-primary btn-block">Sign In</button>
                 </div>
-              </div>
             </form>
-
-            <div className="social-auth-links text-center mb-3">
-              <p>- OR -</p>
-              {/* <a href="#" className="btn btn-block btn-primary">
-                <i className="fab fa-facebook mr-2"></i> Sign in using Facebook
-        </a> */}
-              <FacebookLogin
-              appId="238845014106501" //APP ID NOT CREATED YET
-              fields="name,email,picture"
-              autoLoad={true}
-              callback={responseFacebook}
-            />
-              {/* <a href="#" className="btn btn-block btn-danger">
-                <i className="fab fa-google-plus mr-2"></i> Sign in using Google+
-        </a> */}
-            </div>
-
-            <p className="mb-1">
-              <a href="forgot-password.html">I forgot my password</a>
-            </p>
-            <p className="mb-0">
-
-            <Link to={'/register'}>Register a new membership</Link>
-            </p>
           </div>
         </div>
       </div>

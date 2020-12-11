@@ -23,6 +23,7 @@ class Main extends PureComponent {
       <div className="main-web">
         <Header />
         <SideBar/>
+        <div id="sidebar-overlay"></div>
 
         <div className="content-wrapper">
           <section className="content-header">
