@@ -28,4 +28,30 @@
       display: none;
     }
   }
+
+  #svd-survey-settings {
+    display: none;
+  }
+
+  .svd-designer-tabbed-container__tab-header-container {
+    .svd-designer-tabbed-container__tab-header {
+      &:last-child {
+        display: none
+      }
+    }
+  }
+
+  .svda-question-actions {
+    .svda_question_action--separated {
+      display: none;
+    }
+
+    .icon-actionshowtitle {
+      display: none;
+    }
+
+    .icon-actionnotrequired {
+      display: none !important;
+    }
+  }
 }
