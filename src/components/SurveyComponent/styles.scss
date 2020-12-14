@@ -1,0 +1,31 @@
+#creatorElement {
+  svd-pages-editor {
+    display: none;
+  }
+
+  .svd_container {
+    .svd_content {
+      .svd_survey_designer {
+        .svd_editors .svd_questions_editor {
+          padding-top: 0;
+        }
+      }
+    }
+  }
+
+  .svd-vertical-container {
+    .svd-vertical-container__row {
+      .svd-vertical-container__cell {
+        .svd_commercial_container {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .sv_header {
+    &.svd_survey_header {
+      display: none;
+    }
+  }
+}

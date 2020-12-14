@@ -15,7 +15,7 @@ function index() {
         <nav className="mt-2">
           <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li className="nav-item has-treeview">
-              <a href="#" className="nav-link">
+              <a href="/dashboard" className="nav-link">
                 <i className="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                   Dashboard
@@ -24,30 +24,18 @@ function index() {
               </a>
               <ul className="nav nav-treeview">
                 <li className="nav-item">
-                  <a href="../../index.html" className="nav-link">
+                  <a href="/dashboard" className="nav-link">
                     <i className="far fa-circle nav-icon"></i>
                     <p>Dashboard v1</p>
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a href="../../index2.html" className="nav-link">
-                    <i className="far fa-circle nav-icon"></i>
-                    <p>Dashboard v2</p>
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a href="../../index3.html" className="nav-link">
-                    <i className="far fa-circle nav-icon"></i>
-                    <p>Dashboard v3</p>
                   </a>
                 </li>
               </ul>
             </li>
             <li className="nav-item">
-              <a href="../widgets.html" className="nav-link">
+              <a href="/home" className="nav-link">
                 <i className="nav-icon fas fa-th"></i>
                 <p>
-                  Widgets
+                  Home
                 <span className="right badge badge-danger">New</span>
                 </p>
               </a>
@@ -66,36 +54,6 @@ function index() {
                   <a href="../layout/top-nav.html" className="nav-link">
                     <i className="far fa-circle nav-icon"></i>
                     <p>Top Navigation</p>
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a href="../layout/top-nav-sidebar.html" className="nav-link">
-                    <i className="far fa-circle nav-icon"></i>
-                    <p>Top Navigation + Sidebar</p>
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a href="../layout/boxed.html" className="nav-link">
-                    <i className="far fa-circle nav-icon"></i>
-                    <p>Boxed</p>
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a href="../layout/fixed-sidebar.html" className="nav-link">
-                    <i className="far fa-circle nav-icon"></i>
-                    <p>Fixed Sidebar</p>
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a href="../layout/fixed-topnav.html" className="nav-link">
-                    <i className="far fa-circle nav-icon"></i>
-                    <p>Fixed Navbar</p>
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a href="../layout/fixed-footer.html" className="nav-link">
-                    <i className="far fa-circle nav-icon"></i>
-                    <p>Fixed Footer</p>
                   </a>
                 </li>
                 <li className="nav-item">

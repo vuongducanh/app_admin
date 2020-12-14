@@ -7,6 +7,7 @@ const Dashboard = React.lazy(() => import('../pages/Dashboard'));
 const Login = React.lazy(() => import('../pages/Login'));
 const Register = React.lazy(() => import('../pages/Register'));
 const Page404 = React.lazy(() => import('../components/Errors/Page404'));
+const Home = React.lazy(() => import('../pages/Home'));
 
 const routes = [
   {
@@ -45,6 +46,13 @@ const routes = [
     component: Register,
     layout: NoHeaderFooter,
     layoutMiddleware: RoutePublicLayout
+  },
+  {
+    path: '/home',
+    name: 'Home',
+    component: Home,
+    layout: LayoutMain,
+    layoutMiddleware: RoutePrivateLayout
   }
 ];
 
