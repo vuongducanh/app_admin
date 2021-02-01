@@ -1,79 +1,60 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './styles.scss';
-import { Link } from 'react-router-dom';
 import { login } from './../../api/login'
+import { Checkbox, Form, Input, Button } from 'antd';
 
 const Login = (props) => {
-  const [param, setParam] = useState({
-    email: '',
-    password: ''
-  })
 
-  const _responseFacebook = () => {
-    localStorage.setItem('access_token', 'abc')
-
-    // if (response.accessToken) {
+  const _onFinish =  async (values) => {
+    localStorage.setItem('access_token', 'aaaaa')
+    props.history.push('/dashboard')
+    try {
+      const res = await login(values)
+      localStorage.setItem('access_token', res.data.access_token)
       props.history.push('/dashboard')
-    // }
-  }
+    } catch (error) {
+      localStorage.setItem('access_token', "")
+      throw error
+    }
+  };
 
-  const handleLogin = (e) => {
-    _responseFacebook()
-    // e.preventDefault()
-    // login(param).then((res) => {
-    //   if (res.data.access_token) {
-    //     localStorage.setItem('access_token', res.data.access_token)
-    //     props.history.push('/dashboard')
-    //   }
-    // }).catch((error) => {
-    //   localStorage.setItem('access_token', "")
-    //   throw error
-    // })
-  }
-
-  const handleChangeEmail = (e) => {
-    setParam({...param, email: e.target.value})
-  }
-
-  const handleChangePassWord = (e) => {
-    setParam({...param, password: e.target.value})
-  }
 
   return (
     <div className="login-page">
       <div className="login-box">
-        <div className="login-logo">
-          <div><b>Admin</b></div>
-        </div>
+        <h1 className="title-login">Đăng nhập</h1>
+        <Form
+          layout="vertical"
+          name="basic"
+          initialValues={{ remember: true }}
+          onFinish={_onFinish}
+        >
+          <Form.Item
+            label="Tên đăng nhập"
+            name="username"
+            rules={[{ required: true, message: 'Please input your username!' }]}
+          >
+            <Input className="form-item" />
+          </Form.Item>
 
-        <div className="card">
-          <div className="card-body login-card-body">
-            <p className="login-box-msg">Sign in to start your session</p>
-            <form onSubmit={handleLogin}  method="POST" >
-              <div className="input-group mb-3">
-                <input type="email" className="form-control" placeholder="Email"  onChange={handleChangeEmail}/>
-                <div className="input-group-append">
-                  <div className="input-group-text">
-                    <span className="fas fa-envelope"></span>
-                  </div>
-                </div>
-              </div>
+          <Form.Item
+            label="Mật khẩu"
+            name="password"
+            rules={[{ required: true, message: 'Please input your password!' }]}
+          >
+            <Input.Password  className="form-item"/>
+          </Form.Item>
 
-              <div className="input-group mb-3">
-                <input type="password" className="form-control" placeholder="Password" onChange={handleChangePassWord} />
-                <div className="input-group-append">
-                  <div className="input-group-text">
-                    <span className="fas fa-lock"></span>
-                  </div>
-                </div>
-              </div>
+          <Form.Item name="remember" valuePropName="checked">
+            <Checkbox>Nhớ tôi</Checkbox>
+          </Form.Item>
 
-              <div className="col-4">
-                  <button type="submit" className="btn btn-primary btn-block">Sign In</button>
-                </div>
-            </form>
-          </div>
-        </div>
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Đăng nhập
+        </Button>
+          </Form.Item>
+        </Form>
       </div>
     </div>
   );
